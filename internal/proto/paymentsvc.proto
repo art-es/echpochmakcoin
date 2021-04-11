@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package proto;
+
+service PaymentService {
+    rpc GetBalance (GetBalanceRequest) returns (GetBalanceResponse);
+    rpc Transfer (TransferRequest) returns (TransferResponse);
+}
+
+message GetBalanceRequest {}
+
+message GetBalanceResponse {
+    repeated Balance balances = 1;
+}
+
+message Balance {
+    string address = 1;
+    int64 value = 2;
+}
+
+message TransferRequest {
+    string targetAddress = 1;
+    int64 value = 2;
+}
+
+message TransferResponse {
+    string transactionId = 1;
+}

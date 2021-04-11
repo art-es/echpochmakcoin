@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package proto;
+
+service MessageService {
+    rpc Broadcast(stream Message) returns (stream Message); 
+}
+
+message Message {
+    string type = 1;
+    bytes data = 2;
+}
